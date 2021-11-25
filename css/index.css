@@ -1,0 +1,34 @@
+.room-info p {
+    margin: 3px 0px;
+}
+
+.room-info {
+    margin: 20px 0px;
+}
+
+.room-price {
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+.room-price span {
+    font-size: 20px;
+}
+
+.room-description-card {
+    margin-bottom: 10px;
+}
+
+.carousel-item {
+    overflow: hidden;
+}
+
+.carousel-item img {
+    object-fit: cover;
+    height: 275px;
+}
+
+.carousel-container {
+    display: flex;
+    align-items: center;
+}

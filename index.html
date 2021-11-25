@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Liam's Booking Website</title>
+
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Navbar Start -->
+    <header>
+        <nav class="navbar navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="/">Liam's Booking Site</a>
+            </div>
+        </nav>
+    </header>
+    <!-- Navbar end -->
+
+    <!-- Main content start-->
+    <main>
+        <div class="container">
+            <!-- Rooms heading start -->
+            <section>
+                <h1 class="mt-4 mb-4">Available Rooms</h1>
+
+                <div class="alert alert-success" role="alert" id="booking-success-alert" style="display: none;">
+                    Booking <span class="badge bg-secondary" id="booking-number">#1242</span> - Your booking has been successfully placed!
+                </div>
+
+                <div class="alert alert-danger" role="alert" id="main-error-alert" style="display: none;">
+                    There was an error!
+                </div>
+            </section>
+            <!-- Rooms heading end -->
+
+            <!-- Rooms list start -->
+            <section>
+                <div id="rooms">
+                    <!-- Room template start -->
+                    <div class="row" id="room">
+                        <div class="card mb-3">
+                            <div class="row g-0">
+                                <!-- Room images start -->
+                                <div class="col-lg-5 col-md-6 col-sm-12 carousel-container">
+                                    <div id="carouselControls" class="carousel slide w-100" data-bs-ride="carousel">
+                                        <div class="carousel-inner image-list w-100">
+                                            <div class="carousel-item active align-items-center justify-content-center w-100" id="image-template">
+                                                <img class="w-100" src="https://www.gannett-cdn.com/-mm-/05b227ad5b8ad4e9dcb53af4f31d7fbdb7fa901b/c=0-64-2119-1259/local/-/media/USATODAY/USATODAY/2014/08/13/1407953244000-177513283.jpg" class="d-block w-100" alt="...">
+                                            </div>
+                                        </div>
+                                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselControls" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button" data-bs-target="#carouselControls" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- Room images end -->
+
+                                <!-- Room details start -->
+                                <div class="col-lg-7 col-md-6 col-sm-12">
+                                    <div class="card-body room-details">
+                                        <h4 class="card-title">Room Name</h4>
+                                        <div class="card-text room-info">
+                                            <p><strong>Capacity:</strong> <span>2</span> people</p>
+                                            <p><strong>Address:</strong> <span>39 Fake Street, Brisbane, QLD, Australia</span></p>
+                                        </div>
+                                        <p class="card-text room-price">
+                                            <span class="badge bg-success">$99</span> per night
+                                        </p>
+                                        <button class="btn btn-primary" id="view-info-button" type="button" onclick="viewInfo(this.id)">View Info</button>
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#booking-modal" onclick="bookModal(this.id)">Book</button>
+                                    </div>
+                                </div>
+                                <!-- Room details end -->
+                            </div>
+
+                            <!-- Room description start -->
+                            <div class="collapse room-description-card mt-2" id="room-description">
+                                <div class="card card-body">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem veniam quam distinctio aliquam recusandae, commodi temporibus cupiditate deleniti laborum sint fugiat, tempore sequi maxime eaque sit hic? Natus tempora illum repellat suscipit ex vel doloremque, eos optio at autem sapiente! Odit perspiciatis ipsam aperiam ad voluptate voluptates ipsa! Deleniti, mollitia.
+                                </div>
+                            </div>
+                            <!-- Room description end -->
+                        </div>
+                    </div>
+                    <!-- Room template end -->
+
+                    <!-- Booking modal start -->
+                    <div class="modal fade" id="booking-modal" tabindex="-1" aria-labelledby="booking-modal-label" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="booking-modal-label">New Booking</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form onsubmit="return false">
+                                        <input type="hidden" id="booking-room-id">
+                                        <div class="mb-3">
+                                            <label for="email-input" class="form-label">Email address</label>
+                                            <input type="email" class="form-control" id="email-input" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <label for="start-date-input" class="form-label">Start Date</label>
+                                                    <input class="form-control" id="start-date-input" required>
+                                                </div>
+                                                <div class="col-6">
+                                                    <label for="end-date-input" class="form-label">End Date</label>
+                                                    <input class="form-control" id="end-date-input" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="alert alert-danger" role="alert" id="invalid-date-alert" style="display: none;">
+                                            Please select an uninterrupted date range
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="people-input" class="form-label">Number of Guests</label>
+                                            <input type="number" class="form-control" id="people-input" min="1" max="2" required>
+                                        </div>
+                                        <div class="alert alert-danger" role="alert" id="invalid-capacity-alert" style="display: none;">
+                                            Please enter a value between 1 and
+                                        </div>
+                                        <button type="submit" class="btn btn-primary w-100" id="booking-submit-button">Submit</button>
+                                        <div class="alert alert-danger" role="alert" id="booking-alert" style="display: none;">
+                                            There was an error placing that booking!
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Booking modal end -->
+                </div>
+            </section>
+            <!-- Rooms list end -->
+
+            <!-- Rooms pagination start -->
+            <section>
+                <div class="row">
+                    <div class="col text-center">
+                        <button class="btn btn-primary w-25" id="view-more-button">View More</button>
+                    </div>
+                </div>
+            </section>
+            <!-- Rooms pagination end -->
+        </div>
+    </main>
+    <!-- Main content end -->
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
