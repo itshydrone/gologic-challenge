@@ -45,3 +45,57 @@ Gets a list of rooms being offered to book.
 
   * **Success Response:** `{"status":"success","result":[...],"hasNextPage":true}`
   * **Error Response:** `{"status":"error","message":"..."}`
+
+**getRoom**
+
+Gets the details of a specific room.
+
+* **URL**
+
+  `/api/getroom`
+
+* **Method:**
+  
+  `GET`
+  
+*  **URL Params**
+
+   **Optional:**
+ 
+   `roomid=[integer]` - the ID of the room to retrieve
+
+* **Example Request:**
+  
+  `/api/getroom?roomid=3`
+
+  * **Success Response:** `{"status":"success","result":{}}`
+  * **Error Response:** `{"status":"error","message":"..."}`
+
+**createBooking**
+
+Creates a new booking for a room.
+
+* **URL**
+
+  `/api/createbooking`
+
+* **Method:**
+  
+  `GET`
+  
+*  **URL Params**
+
+   **Optional:**
+ 
+   `roomid=[integer]` - the ID of the room to book
+   `email=[string]` - email address to book for
+   `startdate=[string]` - the start date of the booking (yyyy-mm-dd)
+   `enddate=[string]` - the end date of the booking (yyyy-mm-dd)
+   `guestcount=[integer]` - number of guests that will be staying
+
+* **Example Request:**
+  
+  `/api/createbooking?roomid=3&email=my@gmail.com&startdate=2021-12-13&enddate=2021-12-16&guestcount=2`
+
+  * **Success Response:** `{"status":"success","result":{}}`
+  * **Error Response:** `{"status":"error","message":"..."}`
