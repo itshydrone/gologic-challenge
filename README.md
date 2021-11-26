@@ -27,7 +27,7 @@ Gets a list of rooms being offered to book.
 
 * **URL**
 
-  /api/getrooms
+  `/api/getrooms`
 
 * **Method:**
   
@@ -39,21 +39,9 @@ Gets a list of rooms being offered to book.
  
    `page=[integer]`
 
-* **Success Response:**
+* **Example Request:**
   
-  <_What should the status code be on success and is there any returned data? This is useful when people need to to know what their callbacks should expect!_>
+  `/api/getrooms?page=1`
 
-  * **Code:** 200 <br />
-    **Content:** `{ id : 12 }`
- 
-* **Error Response:**
-
-  <_Most endpoints will have many ways they can fail. From unauthorized access, to wrongful parameters etc. All of those should be liste d here. It might seem repetitive, but it helps prevent assumptions from being made where they should be._>
-
-  * **Code:** 401 UNAUTHORIZED <br />
-    **Content:** `{ error : "Log in" }`
-
-  OR
-
-  * **Code:** 422 UNPROCESSABLE ENTRY <br />
-    **Content:** `{ error : "Email Invalid" }`
+  * **Success Response:** `{"status":"success","result":[...],"hasNextPage":true}`
+  * **Error Response:** `{"status":"error","message":"..."}`
