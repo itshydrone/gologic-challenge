@@ -41,8 +41,8 @@ getRooms = (page) => {
                     // Complete room details
                     roomDetails = room.getElementsByClassName("room-details")[0];
                     roomDetails.getElementsByTagName("h4")[0].innerHTML = roomInfo.name;
-                    roomDetails.getElementsByTagName("div")[0].getElementsByTagName("p")[0].getElementsByTagName("span")[0].innerHTML = roomInfo.capacity;
-                    roomDetails.getElementsByTagName("div")[0].getElementsByTagName("p")[1].getElementsByTagName("span")[0].innerHTML = roomInfo.address;
+                    roomDetails.getElementsByClassName("capacity")[0].innerHTML = roomInfo.capacity + " " + ((roomInfo.capacity == 1) ? 'Person' :'People');
+                    roomDetails.getElementsByClassName("address")[0].innerHTML = roomInfo.address;
                     roomDetails.getElementsByTagName("p")[2].getElementsByTagName("span")[0].innerHTML = "$" + roomInfo.price;
                     roomDetails.getElementsByTagName("button")[0].id = "view-info-button-" + roomInfo.id;
                     roomDetails.getElementsByTagName("button")[1].id = "book-button-" + roomInfo.id;
@@ -67,16 +67,25 @@ getRooms = (page) => {
                         });
                     }
 
+                    // Update carousel controls
+                    carouselControls = room.getElementsByClassName("carousel")[0];
+                    carouselControls.id = "carousel-controls-" + roomInfo.id;
+                    carouselNext = carouselControls.getElementsByClassName("carousel-control-next")[0];
+                    carouselPrev = carouselControls.getElementsByClassName("carousel-control-prev")[0];
+                    carouselNext.setAttribute("data-bs-target", "#carousel-controls-" + roomInfo.id);
+                    carouselPrev.setAttribute("data-bs-target", "#carousel-controls-" + roomInfo.id);
+
                     // Add booking dates to global variable
                     bookingDates[roomInfo.id] = roomInfo.bookings;
                 
                     // Display room
+                    room.style.display = "block";
                     document.getElementById("rooms").appendChild(room);
                 });
             }
 
             // Check if next page
-            if (data.result.hasNextPage == true) {
+            if (data.hasNextPage == true) {
                 document.getElementById("view-more-button").style.display = "block";
             } else {
                 document.getElementById("view-more-button").style.display = "none";
@@ -243,6 +252,7 @@ bookModal = (clickedId) => {
         beforeShowDay: function (date) {
             // If date in future     
             if (new Date(date) > new Date()) {
+                // Check whether date booked
                 validDate = checkDate(date, roomId);
                 return [validDate];
             } else {
@@ -271,6 +281,7 @@ bookModal = (clickedId) => {
                 document.getElementById("booking-number").innerHTML = "#" + data.result.id;
                 $('#booking-modal').modal('hide');
 
+                // Update stored booking dates
                 newDates = [];
                 newDates["start"] = startDate;
                 newDates["end"] = endDate;

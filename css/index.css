@@ -32,3 +32,12 @@
     display: flex;
     align-items: center;
 }
+
+footer {
+    background: #e8e8e8;
+}
+
+.room-row > div {
+    padding-left: 0px;
+    padding-right: 0px;
+}
