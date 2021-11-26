@@ -87,11 +87,11 @@ Creates a new booking for a room.
 
    **Optional:**
  
-   `roomid=[integer]` - the ID of the room to book
-   `email=[string]` - email address to book for
-   `startdate=[string]` - the start date of the booking (yyyy-mm-dd)
-   `enddate=[string]` - the end date of the booking (yyyy-mm-dd)
-   `guestcount=[integer]` - number of guests that will be staying
+   `roomid=[integer]` - the ID of the room to book </br>
+   `email=[string]` - email address to book for </br>
+   `startdate=[string]` - the start date of the booking (yyyy-mm-dd) </br>
+   `enddate=[string]` - the end date of the booking (yyyy-mm-dd) </br>
+   `guestcount=[integer]` - number of guests that will be staying </br>
 
 * **Example Request:**
   
