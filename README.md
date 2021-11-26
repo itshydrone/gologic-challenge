@@ -22,6 +22,7 @@ API Documentation
 -----------------
 
 **getRooms**
+
 Gets a list of rooms being offered to book.
 
 * **URL**
