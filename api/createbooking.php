@@ -47,13 +47,31 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 $datePattern = "/\d{4}-\d{2}-\d{2}/";
 
 // Validate start date
-if (preg_match($datePattern, $startDate) == 0 && $startDate > date("Y-m-d")) {
-    apiError("Invalid start date");
+if (preg_match($datePattern, $startDate) == 0 && $startDate > date("Y-m-d")) { 
+    // Get start date components
+    $startDateSplit = explode("-", $startDate);
+    $startYear = $startDateSplit[0];
+    $startMonth = $startDateSplit[1];
+    $startDay = $startDateSplit[2];
+
+    // If invalid start date
+    if (!checkdate($startMonth, $startDay, $startYear)) {
+        apiError("Invalid start date");
+    }
 }
 
 // Validate end date
 if (preg_match($datePattern, $endDate) == 0 && $endDate > date("Y-m-d")) {
-    apiError("Invalid end date");
+    // Get end date components
+    $endDateSplit = explode("-", $endDate);
+    $endYear = $endDateSplit[0];
+    $endMonth = $endDateSplit[1];
+    $endDay = $endDateSplit[2];
+
+    // If invalid end date
+    if (!checkdate($endMonth, $endDay, $endYear)) {
+        apiError("Invalid end date");
+    }
 }
 
 // Start date is before end date

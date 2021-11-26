@@ -7,7 +7,7 @@ require("includes/apicommon.php");
 $offset = 0;
 
 if (isset($_GET["page"])) {
-    if (is_numeric($_GET["page"])) {
+    if (is_numeric($_GET["page"]) && $_GET["page"] > 0) {
         $offset = ($_GET["page"] - 1) * 10;
     } else {
         // Return error

@@ -27,7 +27,7 @@ getRooms = (page) => {
     }
 
     // Get rooms
-    fetch("/api/getrooms.php?page=" + page)
+    fetch("/api/getrooms?page=" + page)
     .then(response => response.json())
     .then(data => {
         // Check whether successfuly and if there are rooms
@@ -117,6 +117,7 @@ checkDate = (date, roomId) => {
     return validDate;
 }
 
+// Check whether booking range can be booked
 checkDateRange = (startDate, endDate, roomId) => {
     userStartDate = new Date(startDate);
     userEndDate = new Date(endDate);
@@ -144,7 +145,7 @@ bookModal = (clickedId) => {
     roomId = clickedId.split("-")[2];
     document.getElementById("booking-room-id").value = roomId;
 
-    fetch("/api/getroom.php?roomid=" + roomId)
+    fetch("/api/getroom?roomid=" + roomId)
     .then(response => response.json())
     .then(data => {
         // Check whether successfully retrieved room info
@@ -271,7 +272,7 @@ bookModal = (clickedId) => {
         guestCount = document.getElementById("people-input").value;
 
         // Submit booking
-        fetch("/api/createbooking.php?roomid=" + roomId + "&email=" + email + "&startdate=" + startDate + "&enddate=" + endDate + "&guestcount=" + guestCount)
+        fetch("/api/createbooking?roomid=" + roomId + "&email=" + email + "&startdate=" + startDate + "&enddate=" + endDate + "&guestcount=" + guestCount)
         .then(response => response.json())
         .then(data => {
             // If booking successfully placed
