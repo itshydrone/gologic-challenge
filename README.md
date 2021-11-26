@@ -37,7 +37,7 @@ Gets a list of rooms being offered to book.
 
    **Optional:**
  
-   `page=[integer]`
+   `page=[integer]` - the page of rooms to retrieve
 
 * **Example Request:**
   
