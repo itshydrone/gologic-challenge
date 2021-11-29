@@ -8,6 +8,6 @@ actor: AcceptanceTester
 modules:
     enabled:
         - PhpBrowser:
-            url: http://localhost/
+            url: https://roombooking.ga/
         - \Helper\Acceptance
 step_decorators: ~        

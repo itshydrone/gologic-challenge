@@ -9,7 +9,7 @@ class GetRoomsNegativePageCest
     // tests
     public function tryToTest(ApiTester $I)
     {
-        $I->sendGet('/getRooms?page=-1');
+        $I->sendGet('/getrooms?page=-1');
         $I->seeResponseCodeIsSuccessful();
         $I->seeResponseIsJson();
         $I->seeResponseContains('"status":"error"');

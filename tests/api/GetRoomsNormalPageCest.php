@@ -9,7 +9,7 @@ class GetRoomsNormalPageCest
     // tests
     public function tryToTest(ApiTester $I)
     {
-        $I->sendGet('/getRooms?page=3');
+        $I->sendGet('/getrooms?page=3');
         $I->seeResponseCodeIsSuccessful();
         $I->seeResponseIsJson();
         $I->seeResponseContains('"status":"success"');

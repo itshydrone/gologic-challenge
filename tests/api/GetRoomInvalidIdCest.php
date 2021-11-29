@@ -9,7 +9,7 @@ class GetRoomInvalidIdCest
     // tests
     public function tryToTest(ApiTester $I)
     {
-        $I->sendGet('/getRoom?roomid=a');
+        $I->sendGet('/getroom?roomid=a');
         $I->seeResponseCodeIsSuccessful();
         $I->seeResponseIsJson();
         $I->seeResponseContains('"status":"error"');

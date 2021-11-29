@@ -2,6 +2,6 @@ actor: ApiTester
 modules:
     enabled:
         - REST:
-            url: http://localhost/api/
+            url: https://roombooking.ga/api
             depends: PhpBrowser
             part: Json

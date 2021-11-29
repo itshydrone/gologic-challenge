@@ -9,7 +9,7 @@ class GetRoomCest
     // tests
     public function tryToTest(ApiTester $I)
     {
-        $I->sendGet('/getRoom?roomid=4');
+        $I->sendGet('/getroom?roomid=4');
         $I->seeResponseCodeIsSuccessful();
         $I->seeResponseIsJson();
         $I->seeResponseContains('"status":"success"');
