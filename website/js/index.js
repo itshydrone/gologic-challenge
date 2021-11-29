@@ -287,7 +287,7 @@ bookModal = (clickedId) => {
                 newDates["start"] = startDate;
                 newDates["end"] = endDate;
 
-                bookingDates[roomId] = newDates;
+                bookingDates[roomId].push(newDates);
             } else {
                 document.getElementById("booking-alert").style.display = "block";
             }
