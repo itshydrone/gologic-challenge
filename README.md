@@ -12,7 +12,7 @@ Although the solution achieves its purpose of providing a fully functional booki
 
 ## Hosted Website
 
-The live version of the website can be accessed at [roomboking.ga](https://roombooking.ga/)
+The live version of the website can be accessed at [roombooking.ga](https://roombooking.ga/)
 
 ## API Documentation
 
