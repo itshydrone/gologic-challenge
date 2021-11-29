@@ -154,7 +154,7 @@ bookModal = (clickedId) => {
             document.getElementById("people-input").max = data.result.capacity;
 
             // Check whether input valid when setting guests
-            document.getElementById("people-input").onkeyup = () => {
+            document.getElementById("people-input").oninput = () => {
                 if (document.getElementById("people-input").value <= 0 || document.getElementById("people-input").value > data.result.capacity) {
                     document.getElementById("invalid-capacity-alert").innerHTML = "Please enter a value between 1 and " + data.result.capacity;
                     document.getElementById("invalid-capacity-alert").style.display = "block";

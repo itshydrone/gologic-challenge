@@ -14,8 +14,6 @@ Although the solution achieves its purpose of providing a fully functional booki
 
 The live version of the website can be accessed at [roomboking.ga](https://roombooking.ga/)
 
-## Installation
-
 ## API Documentation
 
 ### **getRooms**
@@ -65,7 +63,7 @@ Gets the details of a specific room.
   
   `/api/getroom?roomid=3`
 
-  * **Success Response:** `{"status":"success","result":{}}`
+  * **Success Response:** `{"status":"success","result":{...}}`
   * **Error Response:** `{"status":"error","message":"..."}`
 
 ### **createBooking**
@@ -94,5 +92,5 @@ Creates a new booking for a room.
   
   `/api/createbooking?roomid=3&email=my@gmail.com&startdate=2021-12-13&enddate=2021-12-16&guestcount=2`
 
-  * **Success Response:** `{"status":"success","result":{}}`
+  * **Success Response:** `{"status":"success","result":{...}}`
   * **Error Response:** `{"status":"error","message":"..."}`
